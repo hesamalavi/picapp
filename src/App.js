@@ -24,13 +24,6 @@ function App() {
                 style={{ minHeight: '100vh' }}
             >
                 <div className="w-100" style={{ maxWidth: '400px' }}>
-                    <p>
-                        {currentUser ? (
-                            <span>LOGGED IN</span>
-                        ) : (
-                            <span>GUEST</span>
-                        )}
-                    </p>
                     <Router>
                         <Switch>
                             <PrivateRoute
@@ -52,12 +45,12 @@ function App() {
                     </Router>
                 </div>
             </Container>
-            <div className="App">
-                {currentUser ? (
+            {currentUser ? (
+                <div className="App">
                     <>
-                        <ImageGrid setSelectedImg={setSelectedImg} />
                         <Title />
                         <UploadForm />
+                        <ImageGrid setSelectedImg={setSelectedImg} />
 
                         {selectedImg && (
                             <Modal
@@ -66,8 +59,8 @@ function App() {
                             />
                         )}
                     </>
-                ) : null}
-            </div>
+                </div>
+            ) : null}
         </>
     );
 }
